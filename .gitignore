@@ -1,0 +1,744 @@
+# ========================================
+# .NET Core & ASP.NET Core
+# ========================================
+
+# Build results
+[Bb]in/
+[Oo]bj/
+publish/
+out/
+
+# User-specific files
+*.suo
+*.user
+*.apdb
+*.mdb
+*.ldf
+*.cache
+
+# Auto-generated files
+*.designer.cs
+*.generated.cs
+
+# NuGet
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
+
+# Visual Studio
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# JetBrains Rider
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# ========================================
+# Dependencies & Package Managers
+# ========================================
+
+# NuGet
+packages/
+*.nupkg
+
+# NPM
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Bower
+bower_components/
+
+# ========================================
+# Runtime & Environment
+# ========================================
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Application secrets
+secrets.json
+appsettings.*.json
+
+# User secrets (Visual Studio)
+secrets/
+
+# ========================================
+# Operating System Files
+# ========================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ========================================
+# Logs & Debugging
+# ========================================
+
+# Logs
+logs/
+*.log
+log/
+
+# Debugging
+*.pdb
+*.dbg
+
+# Profiling
+*.prof
+
+# Tracing
+*.trace
+*.etl
+
+# Coverage reports
+coverage/
+*.lcov
+*.info
+
+# ========================================
+# Testing & Quality
+# ========================================
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+
+# xUnit
+test.xunit.xml
+
+# ========================================
+# Build & Deployment
+# ========================================
+
+# Build outputs
+dist/
+build/
+out/
+deploy/
+
+# Publishing
+publish/
+
+# Azure
+*.Publish.xml
+
+# Docker
+.dockerignore
+
+# ========================================
+# Temporary & Cache Files
+# ========================================
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Cache directories
+.cache/
+*.cache
+
+# Backup files
+*.bak
+*.backup
+*.orig
+*.rej
+
+# Patch files
+*.patch
+
+# ========================================
+# Application Specific
+# ========================================
+
+# ASP.NET Core
+wwwroot/dist/
+
+# Entity Framework
+*.db
+*.sqlite
+*.sqlite3
+Migrations/
+
+# Local database files
+*.mdf
+*.ldf
+
+# Session state
+*.session
+
+# ========================================
+# Security & Credentials
+# ========================================
+
+# Certificates
+*.pfx
+*.p12
+*.pem
+*.key
+*.crt
+
+# Keys and secrets
+*.key
+*.secret
+*_secret*
+
+# ========================================
+# Remote Debugging
+# ========================================
+
+# Visual Studio remote debugging
+*.vsix
+
+# Azure remote debugging
+RemoteDebugger/
+
+# ========================================
+# Miscellaneous
+# ========================================
+
+# Windows Installer
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Application bundles
+*.appx
+*.appxbundle
+
+# Archives
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Documentation builds
+docs/_build/
+*.pdf
+
+# ========================================
+# Project Specific
+# ========================================
+
+# Local configuration overrides
+appsettings.local.json
+
+# Development overrides
+appsettings.Development.json
+
+# Production overrides
+appsettings.Production.json
+
+# User-specific settings
+user.settings.json
+
+# ========================================
+# File Types to Always Ignore
+# ========================================
+
+# Binary files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Compressed files (comment out if you want to track these)
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.bz2
+
+# Large media files (comment out if you want to track these)
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.mp3
+*.wav
+*.flac
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.ico
+*.webp
+
+# ========================================
+# IntelliJ IDEA & Android Studio
+# ========================================
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Android
+.gradle/
+build/
+captures/
+
+# ========================================
+# Visual Studio & .NET
+# ========================================
+
+# Visual Studio 2015/2017/2019/2022
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# ========================================
+# Git & Version Control
+# ========================================
+
+# Git
+.git/
+.gitattributes.local
+
+# GitHub
+.github/
+
+# ========================================
+# Cloud & Deployment
+# ========================================
+
+# Azure
+.azure/
+
+# AWS
+.aws/
+
+# Google Cloud
+.gcloud/
+
+# ========================================
+# CI/CD
+# ========================================
+
+# GitHub Actions
+.github/workflows/
+
+# Azure DevOps
+.azure-devops/
+
+# Jenkins
+jenkins/
+
+# Travis CI
+.travis.yml
+
+# AppVeyor
+appveyor.yml
+
+# CircleCI
+.circleci/
+
+# GitLab CI
+.gitlab-ci.yml
+
+# ========================================
+# Documentation
+# ========================================
+
+# Sphinx documentation
+docs/_build/
+
+# MkDocs documentation
+/site
+
+# Jekyll
+_site/
+
+# Hugo
+/public/
+
+# ========================================
+# Database
+# ========================================
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# MySQL
+*.mysql
+
+# PostgreSQL
+*.psql
+
+# MongoDB
+*.mongodb
+
+# Redis
+*.redis
+
+# ========================================
+# Security Scanning
+# ========================================
+
+# OWASP ZAP
+*.zap
+
+# Burp Suite
+*.burp
+
+# Security scans
+*.scan
+
+# ========================================
+# Performance Profiling
+# ========================================
+
+# dotTrace
+*.dtp
+
+# ANTS
+*.ants
+
+# JetBrains dotMemory
+*.dtm
+
+# Visual Studio Profiler
+*.psess
+*.vspx
+
+# ========================================
+# Package Management
+# ========================================
+
+# NuGet
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
+
+# NPM
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Ruby
+.bundle/
+.config/
+coverage/
+InstalledFiles/
+lib/bundler/man/
+pkg/
+rdoc/
+spec/reports/
+test/tmp/
+test/version_tmp/
+tmp/
+
+# PHP
+/vendor/
+composer.lock
+
+# Java
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Go
+vendor/
+
+# Rust
+target/
+Cargo.lock
+
+# ========================================
+# Editor & IDE Backups
+# ========================================
+
+# Vim
+*.swp
+*.swo
+*~
+Session.vim
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Atom
+.atom/
+
+# Brackets
+.brackets
+
+# TextMate
+*.tmproj
+*.tmproject
+tmtags
+
+# ========================================
+# Network & Remote Files
+# ========================================
+
+# Network drives
+//*/
+
+# Remote files
+*.remote
+
+# ========================================
+# Development Tools
+# ========================================
+
+# Postman
+*.postman
+
+# Insomnia
+insomnia/
+
+# SoapUI
+*.soapui
+
+# ========================================
+# File Transfer
+# ========================================
+
+# FTP
+*.ftp
+
+# SFTP
+*.sftp
+
+# ========================================
+# Virtualization
+# ========================================
+
+# Vagrant
+.vagrant/
+Vagrantfile
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# VirtualBox
+*.vbox
+*.vbox-prev
+
+# VMware
+*.vmx
+*.vmxf
+
+# ========================================
+# Mobile Development
+# ========================================
+
+# iOS
+*.mobileprovision
+*.ipa
+
+# Android
+*.apk
+*.ap_
+
+# Xamarin
+*.xap
+
+# Cordova/PhoneGap
+/platforms/
+/plugins/
+
+# React Native
+node_modules/
+ios/build/
+android/app/build/
+
+# Flutter
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache
+build/
+
+# ========================================
+# Desktop Applications
+# ========================================
+
+# Electron
+dist/
+release/
+
+# NW.js
+.cache/
+
+# ========================================
+# Games & Graphics
+# ========================================
+
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+Assets/AssetStoreTools*
+
+# Unreal Engine
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Godot
+.import/
+*.import
+
+# ========================================
+# Miscellaneous Applications
+# ========================================
+
+# Microsoft Office
+*.docx
+*.xlsx
+*.pptx
+
+# LibreOffice
+*.odt
+*.ods
+*.odp
+
+# PDF
+*.pdf
+
+# Archives (uncomment if you want to track archives)
+# *.zip
+# *.rar
+# *.7z
+# *.tar
+# *.tar.gz
+# *.tgz
+
+# ========================================
+# Always Track These Files
+# ========================================
+
+# Keep these files (uncomment if needed)
+# !.gitignore
+# !README.md
+# !LICENSE
+# !.editorconfig
+# !.gitattributes
+
+# ========================================
+# Custom Rules
+# ========================================
+
+# Add any project-specific patterns below this line
+# Example: Ignore local configuration files
+# local.config
+# *.local
+
+# Example: Ignore development database
+# dev.db
+# *.dev.db
+
+# Example: Ignore backup files
+# *.bak
+# backup/
+
+# ========================================
+# End of .gitignore
+# ========================================

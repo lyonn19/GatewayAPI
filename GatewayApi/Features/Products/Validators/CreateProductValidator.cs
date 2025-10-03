@@ -1,10 +1,9 @@
 using FluentValidation;
-using GatewayApi.Common.Validators;
 using GatewayApi.Features.Products.Models;
 
 namespace GatewayApi.Features.Products.Validators;
 
-public class CreateProductValidator : BaseValidator<CreateProductRequest>
+public class CreateProductValidator : AbstractValidator<CreateProductRequest>
 {
     public CreateProductValidator()
     {

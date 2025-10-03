@@ -4,12 +4,15 @@ using GatewayApi.Common.Exceptions;
 using GatewayApi.Common.Results;
 using GatewayApi.Features.Products.Endpoints;
 using GatewayApi.Features.Products.Models;
+using GatewayApi.Features.Products.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.SwaggerUI;
+using System.IO;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,12 +23,13 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+        options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
         options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
     });
 
 // Configure Authentication
+/*
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -49,6 +53,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
     options.AddPolicy("UserOrAdmin", policy => policy.RequireRole("User", "Admin"));
 });
+
+*/
 
 // Add FluentValidation
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
@@ -129,6 +135,9 @@ builder.Services.AddSwaggerGen(options =>
         options.IncludeXmlComments(xmlPath);
     }
 });
+
+// Register services
+builder.Services.AddHttpClient<IProductService, ProductService>();
 
 
 var app = builder.Build();

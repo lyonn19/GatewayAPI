@@ -1,5 +1,6 @@
 using GatewayApi.Common.Results;
 using GatewayApi.Features.Products.Models;
+using GatewayApi.Features.Products.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,26 +12,26 @@ namespace GatewayApi.Features.Products.Endpoints;
 //[Authorize] // Require authentication for all endpoints
 public class ProductController : ControllerBase
 {
+    private readonly IProductService _productService;
     private readonly ILogger<ProductController> _logger;
-    private static readonly List<Product> _products = new();
 
-    public ProductController(ILogger<ProductController> logger)
+    public ProductController(IProductService productService, ILogger<ProductController> logger)
     {
-        _logger = logger;
+        _productService = productService ?? throw new ArgumentNullException(nameof(productService));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     [HttpGet]
-    [Authorize(Roles = "User,Admin")] // Users and Admins can view products
+    //[Authorize(Roles = "User,Admin")] // Users and Admins can view products
     public async Task<IActionResult> GetAllProducts(CancellationToken cancellationToken)
     {
         _logger.LogInformation("Getting all products");
 
-        var result = Result<IEnumerable<Product>>.Success(_products.AsReadOnly());
-
-        _logger.LogInformation("Successfully retrieved {ProductCount} products", _products.Count);
+        var result = await _productService.GetAllProductsAsync();
 
         if (result.IsSuccess)
         {
+            _logger.LogInformation("Successfully retrieved {ProductCount} products", result.Value?.Count() ?? 0);
             return Ok(result);
         }
 
@@ -39,25 +40,23 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("{id:guid}")]
-    [Authorize(Roles = "User,Admin")] // Users and Admins can view specific products
+    //[Authorize(Roles = "User,Admin")] // Users and Admins can view specific products
     public async Task<IActionResult> GetProductById(Guid id, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Getting product with ID: {ProductId}", id);
 
-        var product = _products.FirstOrDefault(p => p.Id == id);
-
-        if (product == null)
-        {
-            _logger.LogWarning("Product {ProductId} not found", id);
-            return Problem(statusCode: 404, detail: "Product not found");
-        }
-
-        _logger.LogInformation("Successfully retrieved product with ID: {ProductId}", id);
-        var result = Result<Product>.Success(product);
+        var result = await _productService.GetProductByIdAsync(id);
 
         if (result.IsSuccess)
         {
+            _logger.LogInformation("Successfully retrieved product with ID: {ProductId}", id);
             return Ok(result);
+        }
+
+        if (result.StatusCode == 404)
+        {
+            _logger.LogWarning("Product {ProductId} not found", id);
+            return Problem(statusCode: 404, detail: "Product not found");
         }
 
         _logger.LogWarning("Failed to get product {ProductId}: {Error}", id, result.Error);
@@ -73,24 +72,12 @@ public class ProductController : ControllerBase
         var userId = User.FindFirst("sub")?.Value ?? "unknown";
         _logger.LogInformation("User {UserId} is creating a new product: {ProductName}", userId, request.Name);
 
-        var product = new Product
-        {
-            Id = Guid.NewGuid(),
-            Name = request.Name,
-            Description = request.Description,
-            Price = request.Price,
-            Stock = request.Stock
-        };
-
-        _products.Add(product);
-
-        _logger.LogInformation("Successfully created product {ProductId} by user {UserId}", product.Id, userId);
-
-        var result = Result<Product>.Success(product);
+        var result = await _productService.CreateProductAsync(request);
 
         if (result.IsSuccess)
         {
-            return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, result);
+            _logger.LogInformation("Successfully created product {ProductId} by user {UserId}", result.Value?.Id, userId);
+            return CreatedAtAction(nameof(GetProductById), new { id = result.Value?.Id }, result);
         }
 
         _logger.LogWarning("Failed to create product by user {UserId}: {Error}", userId, result.Error);
