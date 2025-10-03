@@ -1,0 +1,59 @@
+@GatewayApi_HostAddress = https://localhost:5001
+
+### Authentication Variables
+@token = YOUR_JWT_TOKEN_HERE
+
+### Get all products (requires User or Admin role)
+GET {{GatewayApi_HostAddress}}/api/products
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### Get product by ID (requires User or Admin role)
+GET {{GatewayApi_HostAddress}}/api/products/550e8400-e29b-41d4-a716-446655440000
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### Create new product (requires Admin role)
+POST {{GatewayApi_HostAddress}}/api/products
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Sample Product",
+  "description": "This is a sample product for testing",
+  "price": 99.99,
+  "stock": 10
+}
+
+###
+
+### Health check (no authentication required)
+GET {{GatewayApi_HostAddress}}/health
+Accept: application/json
+
+###
+
+### Test unauthorized access (should return 401)
+GET {{GatewayApi_HostAddress}}/api/products
+
+###
+
+### Test forbidden access - User trying to create product (should return 403)
+POST {{GatewayApi_HostAddress}}/api/products
+Authorization: Bearer {{user_token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Unauthorized Product",
+  "description": "This should fail for regular users",
+  "price": 50.00,
+  "stock": 5
+}
+
+###
